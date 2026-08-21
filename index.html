@@ -16,7 +16,7 @@
             --accent-rose: #dfaba5;     /* Rose quartz blush */
             --accent-whatsapp: #25D366; /* WhatsApp Green */
             --whatsapp-dark: #128C7E;
-            --bg-cream: #faf7f2;        /* Soothing warm linen */
+            --bg-cream: #f3effa;        /* Light shade of lavender */
             --bg-card: #ffffff;
             --text-main: #2d312e;
             --text-muted: #69706a;
@@ -80,7 +80,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(250, 247, 242, 0.92);
+            background: rgba(243, 239, 250, 0.92);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-light);
@@ -214,7 +214,7 @@
         .hero {
             position: relative;
             padding: 70px 24px;
-            background: linear-gradient(135deg, #f7f4ed 0%, #edf2ee 50%, #f9f3f1 100%);
+            background: linear-gradient(135deg, #f3effa 0%, #e8e2f5 50%, #f7f3fd 100%);
             border-bottom: 1px solid var(--border-light);
             overflow: hidden;
         }
@@ -647,7 +647,7 @@
 
         /* About / Artisan Story Section */
         .story-section {
-            background: #f3ede2;
+            background: #ede6f7;
             padding: 80px 24px;
             border-top: 1px solid var(--border-light);
             border-bottom: 1px solid var(--border-light);
@@ -725,7 +725,7 @@
         }
 
         .accordion-header:hover {
-            background-color: #faf7f2;
+            background-color: #f8f5fd;
         }
 
         .accordion-icon {
@@ -834,7 +834,7 @@
             display: flex;
             gap: 12px;
             align-items: center;
-            background: #faf8f5;
+            background: #f8f5fd;
             padding: 12px;
             border-radius: 12px;
             border: 1px solid var(--border-light);
@@ -892,7 +892,7 @@
 
         .cart-checkout-form {
             padding: 14px 20px;
-            background: #fbf9f6;
+            background: #f6f2fc;
             border-top: 1px solid var(--border-light);
             display: flex;
             flex-direction: column;
@@ -927,7 +927,7 @@
         .cart-footer {
             padding: 16px 20px;
             border-top: 1px solid var(--border-light);
-            background: #faf7f2;
+            background: #f3effa;
         }
 
         .cart-total-row {
@@ -1159,7 +1159,7 @@
                 top: 70px;
                 left: 0;
                 width: 100%;
-                background: #faf7f2;
+                background: #f3effa;
                 flex-direction: column;
                 padding: 24px;
                 gap: 20px;
@@ -1776,32 +1776,20 @@
             const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
             // Construct formatted WhatsApp message
-            let msg = `✨ *NEW ORDER REQUEST - AuraGems* ✨
-
-`;
-            msg += `👤 *Customer Name:* ${customerName}
-`;
-            msg += `📍 *Delivery Address:* ${customerAddress}
-
-`;
-            msg += `🛍️ *Order Summary:*
-`;
-            msg += `--------------------------------
-`;
+            let msg = `✨ *NEW ORDER REQUEST - AuraGems* ✨\n\n`;
+            msg += `👤 *Customer Name:* ${customerName}\n`;
+            msg += `📍 *Delivery Address:* ${customerAddress}\n\n`;
+            msg += `🛍️ *Order Summary:*\n`;
+            msg += `--------------------------------\n`;
 
             cart.forEach((item, index) => {
                 const itemTotal = item.price * item.quantity;
-                msg += `${index + 1}. *${item.name}*
-`;
-                msg += `   Qty: ${item.quantity} × ₹${item.price} = ₹${itemTotal.toLocaleString('en-IN')}
-`;
+                msg += `${index + 1}. *${item.name}*\n`;
+                msg += `   Qty: ${item.quantity} × ₹${item.price} = ₹${itemTotal.toLocaleString('en-IN')}\n`;
             });
 
-            msg += `--------------------------------
-`;
-            msg += `💰 *Total Estimated Amount:* ₹${totalAmount.toLocaleString('en-IN')}
-
-`;
+            msg += `--------------------------------\n`;
+            msg += `💰 *Total Estimated Amount:* ₹${totalAmount.toLocaleString('en-IN')}\n\n`;
             msg += `🙏 Please confirm product availability and payment/UPI details. Thank you!`;
 
             // Encode for WhatsApp URL
