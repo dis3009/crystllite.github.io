@@ -938,7 +938,7 @@
         }
 
         .cart-input:focus {
-            border-color: var(--accent-);
+            border-color: var(--accent-gold);
         }
 
         .cart-footer {
@@ -956,9 +956,9 @@
             margin-bottom: 12px;
         }
 
-        .btn--checkout {
+        .btn-whatsapp-checkout {
             width: 100%;
-            background-color: var(--accent-);
+            background-color: var(--accent-whatsapp);
             color: #ffffff;
             padding: 13px 18px;
             border-radius: 30px;
@@ -972,13 +972,13 @@
             transition: var(--transition);
         }
 
-        .btn--checkout:hover {
-            background-color: var(---dark);
+        .btn-whatsapp-checkout:hover {
+            background-color: var(--whatsapp-dark);
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
         }
 
-        .btn--checkout svg {
+        .btn-whatsapp-checkout svg {
             width: 20px;
             height: 20px;
             fill: currentColor;
@@ -1676,12 +1676,12 @@
         <div class="section-header">
             <span class="section-subtitle">Got Questions?</span>
             <h2 class="section-title">Frequently Asked Questions</h2>
-            <p class="section-desc">Everything you need to know about ordering your crystal bracelets via .</p>
+            <p class="section-desc">Everything you need to know about ordering your crystal bracelets via WhatsApp.</p>
         </div>
 
         <div class="accordion-item">
             <button class="accordion-header">
-                <span>How does  Ordering work?</span>
+                <span>How does Ordering work?</span>
                 <span class="accordion-icon">▾</span>
             </button>
             <div class="accordion-content">
@@ -1691,31 +1691,11 @@
 
         <div class="accordion-item">
             <button class="accordion-header">
-                <span>Are the gemstones 100% natural and authentic?</span>
+                <span>Are the crystals 100% natural and authentic?</span>
                 <span class="accordion-icon">▾</span>
             </button>
             <div class="accordion-content">
-                Yes, absolutely! We source only 100% certified Grade-AAA natural gemstones and minerals from ethical family-owned mines around the world. We never use dyed synthetic glass or imitation plastic beads.
-            </div>
-        </div>
-
-        <div class="accordion-item">
-            <button class="accordion-header">
-                <span>How do I determine my bracelet wrist size?</span>
-                <span class="accordion-icon">▾</span>
-            </button>
-            <div class="accordion-content">
-                Our standard bracelets are crafted at a comfortable 7 inches (approx 17.8 cm), which fits most wrists comfortably with a flexible stretch. If you need a custom smaller or larger size, mention it directly in WhatsApp when ordering!
-            </div>
-        </div>
-
-        <div class="accordion-item">
-            <button class="accordion-header">
-                <span>How should I cleanse and recharge my crystals?</span>
-                <span class="accordion-icon">▾</span>
-            </button>
-            <div class="accordion-content">
-                You can recharge your crystals under the soft light of a Full Moon overnight, cleanse them with sacred smoke (sage, palo santo, or incense), or place them on a Selenite charging plate.
+                Yes, absolutely! We source only 100% certified Grade-AAA natural crystals and minerals from ethical family-owned mines around the world. We never use dyed synthetic glass or imitation plastic beads.
             </div>
         </div>
     </section>
@@ -1742,6 +1722,10 @@
             <div>
                 <label for="custName">Your Name</label>
                 <input type="text" id="custName" class="cart-input" placeholder="e.g. Priya Sharma" autocomplete="name">
+            </div>
+            <div>
+                <label for="wristSize">Wrist Size (inches)</label>
+                <input type="number" id="wristSize" class="cart-input" placeholder="e.g. 6.5" min="1" max="15" step="0.1">
             </div>
             <div>
                 <label for="custAddress">Delivery Address & Pin Code</label>
@@ -1816,7 +1800,7 @@
 
     <!-- Inline JavaScript -->
     <script>
-        const WHATSAPP_PHONE_NUMBER = "8637041762"; 
+        const WHATSAPP_PHONE_NUMBER = "8250471416"; 
 
         // Shopping Cart State
         let cart = [];
@@ -1936,11 +1920,13 @@
             }
 
             const customerName = document.getElementById('custName').value.trim() || 'Valued Customer';
+            const wristSize = document.getElementById('wristSize').value.trim() ? `${document.getElementById('wristSize').value.trim()} inches` : 'Not specified';
             const customerAddress = document.getElementById('custAddress').value.trim() || 'Not specified (will confirm in chat)';
             const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
             let msg = `✨ *NEW ORDER REQUEST - Circle of Peace* ✨\n\n`;
             msg += `👤 *Customer Name:* ${customerName}\n`;
+            msg += `📏 *Wrist Size:* ${wristSize}\n`;
             msg += `📍 *Delivery Address:* ${customerAddress}\n\n`;
             msg += `🛍️ *Order Summary:*\n`;
             msg += `--------------------------------\n`;
